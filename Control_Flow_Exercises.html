@@ -1,0 +1,168 @@
+<!-- Control_Flow_Exercises -->
+<!DOCTYPE html>
+<html>
+<style>
+div {
+  background-color: lightblue;
+  width: 60%;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: monospace;
+  font-size: 18px;
+}
+</style>
+
+<body>
+<script>
+var answers = [];
+var q
+var ex_sentence = "National Center for Supercomputing Applications (NCSA)";
+var ex_array = ["one","two","three"];
+
+// Return the argument with all its lowercase characters removed.
+function destructive_uppercase(str) {
+  return str.split("").filter((n) => { return n == n.toLowerCase(); }).join("");
+}
+q  = destructive_uppercase+"<br/><br/>"
+q += ex_sentence+"<br/><br/>=> "
+q += destructive_uppercase(ex_sentence)
+answers.push(q)
+
+// Return the middle character of a string. Return the middle two characters if
+// the word is of even length, e.g. middle_substring("middle") => "dd",
+// middle_substring("mid") => "i"
+function middle_substring(str) {
+  if (str.length % 2 == 0) {
+    let idx = Math.floor(str.length/2)
+    return str.slice(idx-1,idx+1)
+  } else {
+    let idx = Math.floor(str.length/2)
+    return str.slice(idx, idx+1)
+  }
+}
+q  = middle_substring+"<br/><br/>"
+q += ex_sentence+"<br/><br/>=> "
+q += middle_substring(ex_sentence)
+answers.push(q)
+
+// Return the number of vowels in a string
+function num_vowels(str) {
+  return str.toLowerCase().split("").filter((n) => {
+    return "aeuio".indexOf(n)+1;
+  }).length;
+}
+q  = num_vowels+"<br/><br/>"
+q += ex_sentence+"<br/><br/>=> "
+q += num_vowels(ex_sentence)
+answers.push(q)
+
+// Return the factoral of the argument (num). A number's factorial is the product
+// of all whole numbers between 1 and the number itself. Assume the argument will
+// be > 0.
+function factorial(num) {
+  result = 1;
+  for (var i=0; i<num;i++) {
+    result *= i+1
+  }
+  return result
+}
+q  = factorial+"<br/><br/>"
+q += "8<br/><br/>=> "
+q += factorial(8)
+answers.push(q)
+
+// Write your own version of the join method. separator = "" ensures that the
+// default seperator is an empty string.
+function my_join(arr, separator) {
+  str = "";
+  for (x in arr) {
+    str += x
+    if (x != arr.length-1) { str += separator; }
+  }
+  return str;
+}
+q  = my_join+"<br/><br/>"
+q += ex_array+"<br/><br/>=> "
+q += my_join(ex_array, "-")
+answers.push(q)
+
+// Write a method that converts its argument to weirdcase, where every odd
+// character is lowercase and every even is uppercase, e.g.
+// weirdcase("weirdcase") => "wEiRdCaSe"
+function weirdcase(str) {
+  return str.split("").map((n,i) => {
+    if (i % 2 == 0) {
+      return n.toUpperCase();
+    } else {
+      return n.toLowerCase();
+    }
+  }).join("");
+}
+q  = weirdcase+"<br/><br/>"
+q += ex_sentence+"<br/><br/>=> "
+q += weirdcase(ex_sentence)
+answers.push(q)
+
+// Reverse all words of five more more letters in a string. Return the resulting
+// string, e.g., reverse_five("Looks like my luck has reversed") => "skooL like
+// my luck has desrever")
+function reverse_five(str) {
+  return str.split(" ").map((word) => {
+    if (word.length>=5) {
+      return word.split("").reverse().join("");
+    } else {
+      return word;
+    }
+  }).join(" ");
+}
+q  = reverse_five+"<br/><br/>"
+q += ex_sentence+"<br/><br/>=> "
+q += reverse_five(ex_sentence)
+answers.push(q)
+
+// Return an array of integers from 1 to n (inclusive), except for each multiple
+// of 3 replace the integer with "fizz", for each multiple of 5 replace the
+// integer with "buzz", and for each multiple of both 3 and 5, replace the
+// integer with "fizzbuzz".
+function fizzbuzz(n) {
+  arr = [];
+  for (var i=1; i<=n; i++) {
+    if (i % 15==0) {
+      arr.push("fizzbuzz")
+    } else if (i % 3==0) {
+      arr.push("fizz")
+    } else if (i % 5==0) {
+      arr.push("buzz")
+    } else {
+      arr.push(i)
+    }
+  }
+  return arr.join(", ")
+}
+q  = fizzbuzz+"<br/><br/>"
+q += "20<br/><br/>=> "
+q += fizzbuzz(20)
+answers.push(q)
+
+// Write a method that returns a new array containing all the elements of the
+// original array in reverse order.
+function my_reverse(arr) {
+  return arr.map((el,i) => { return arr[arr.length-1-i]; } );
+}
+q  = my_reverse+"<br/><br/>"
+q += ex_array+"<br/><br/>=> "
+q += my_reverse(ex_array, "-")
+answers.push(q)
+
+
+
+
+
+for (x in answers) {
+  let div = document.createElement("div");
+  div.innerHTML = answers[x] ;
+  document.body.appendChild(div)
+}
+</script>
+</body>
+</html>

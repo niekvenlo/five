@@ -1,0 +1,29 @@
+<!-- Control_Flow_Exercises -->
+<!DOCTYPE html>
+<html>
+<style>
+html { height: 100%; }
+body { height: 100%; background-color: #dce5f4; }
+img { position: absolute; }
+</style>
+
+<body onload="start()">
+
+<script>
+function start() {
+  document.addEventListener("click", (e) => { haps(e); }, false);
+}
+
+function haps(e) {
+  let ball_radius = 170;
+  let x = e.clientX-ball_radius;
+  let y = e.clientY-ball_radius;
+  pic = document.createElement("img");
+  pic.id = 1;
+  pic.src="basketball.png";
+  pic.style.left=x+"px";
+  pic.style.top=y+"px";
+  document.body.appendChild(pic);
+}
+</script>
+</body>
